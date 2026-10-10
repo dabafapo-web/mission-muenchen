@@ -7,7 +7,10 @@ const classify=(prompt,items,categories,answer,feedback,hints=[])=>({type:'class
 const wo='Wo? exprime une localisation. Wohin? exprime une destination. Avec une préposition mixte, on utilise ici le datif pour la localisation et l’accusatif pour la destination.';
 const dass='Dass introduit ce qu’on pense ou affirme. Dans la subordonnée, le verbe conjugué se place à la fin.';
 const weil='Weil introduit une cause. Dans la subordonnée, le verbe conjugué se place à la fin.';
-const stages=[{title:'Orientierung in München',subtitle:'Trouver son chemin',icon:'↗',tasks:[
+const stages=[{title:'Orientierung in München',subtitle:'Découvrir Munich et trouver son chemin',icon:'↗',tasks:[
+mc('Was ist die Eisbachwelle?',['Eine stehende Welle','Ein Schwimmbad','Ein See'],'L’Eisbachwelle est une vague stationnaire.'),
+mc('Richtig oder falsch? Auf der Eisbachwelle kann man surfen.',['Richtig','Falsch'],'On peut surfer sur l’Eisbachwelle.'),
+{type:'text',prompt:'Ergänze den Satz. Die Eisbachwelle befindet sich im ...',answer:'Englischen Garten',feedback:'L’Eisbachwelle se trouve dans l’Englischer Garten à Munich.'},
 match('Ordne die Wörter zu!',[['geradeaus','tout droit'],['links','à gauche'],['rechts','à droite'],['die Kreuzung','le carrefour']],'Ces mots permettent de comprendre un itinéraire.'),
 match('Verbinde die Satzteile!',[['Geh','geradeaus'],['Bieg','links ab'],['Nimm','die erste Straße rechts']],'À l’impératif : Geh geradeaus! Bieg links ab! Nimm die erste Straße rechts!'),
 order('Bilde den Satz!',['geradeaus','gehen'],'Du musst','Après musst, l’infinitif gehen se place à la fin.'),

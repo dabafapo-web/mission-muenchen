@@ -1,6 +1,6 @@
 # Mission München — München mal anders
 
-Quiz de révision A2+/B1 pour les élèves de Première : 40 tâches, quatre étapes autonomes de dix. Site statique sans compte, API, analytics, cookies ni dépendance externe au chargement.
+Quiz de révision A2+/B1 pour les élèves de Première : 43 tâches, quatre étapes autonomes : 13 dans la découverte de Munich, puis trois étapes de 10. Site statique sans compte, API, analytics, cookies ni dépendance externe au chargement.
 
 ## Essayer la démonstration
 
@@ -16,7 +16,7 @@ Ouvrir ensuite `http://localhost:8080`. Aucun serveur applicatif n’est utilis�
 
 ## Organisation
 
-- `data.js` : les 40 tâches, les réponses attendues et les explications françaises.
+- `data.js` : les 43 tâches, les réponses attendues et les explications françaises.
 - `engine.js` : mélange Fisher–Yates, évaluation exacte et calcul des scores.
 - `map.js` : coordonnées SVG, rues, bâtiments, trajets et simulateur géométrique.
 - `quiz.js` : associations, classement, ordre par boutons, menus, carte, navigation et résultats.
@@ -40,13 +40,13 @@ La sauvegarde est désactivée par défaut. Si elle est activée, seuls les dern
 
 Le plan est **fictif**, inspiré du plan touristique fourni. Le réseau est défini par des coordonnées, des segments et des nœuds internes invisibles. Les rues sont obliques et leurs îlots de dimensions variées. Les destinations utilisent des illustrations SVG intégrées, sans image générée ni service externe.
 
-- Tâche 8 : départ à la Bücherei, orienté vers le Café ; premier carrefour, gauche, deuxième carrefour, droite, premier carrefour. Destination : Museum. Aucun tracé ni nom de destination dans les consignes.
-- Tâche 9 : départ au Hotel, orienté vers la Kirche ; premier carrefour, gauche, deuxième carrefour. Les deux nombres rendent les trois consignes distinctes.
-- Tâche 10 : départ au Bahnhof, orienté vers le Museum ; deuxième carrefour, gauche et premier carrefour, droite et premier carrefour. La destination n’est pas donnée.
+- Tâche 11 : départ à la Bücherei, orienté vers le Café ; premier carrefour, gauche, deuxième carrefour, droite, premier carrefour. Destination : Museum. Aucun tracé ni nom de destination dans les consignes.
+- Tâche 12 : départ au Hotel, orienté vers la Kirche ; premier carrefour, gauche, deuxième carrefour. Les deux nombres rendent les trois consignes distinctes.
+- Tâche 13 : départ au Bahnhof, orienté vers le Museum ; deuxième carrefour, gauche et premier carrefour, droite et premier carrefour. La destination n’est pas donnée.
 
 Le nombre de carrefours commence après le départ ou le virage. Un virage change l’orientation sans avancer. Le simulateur identifie les voisins par leur angle relatif : moins de 25° pour continuer, 35° à 135° pour un virage. Il refuse une instruction s’il existe zéro ou plusieurs voisins possibles. Les tests lisent aussi les consignes allemandes affichées pour simuler le parcours indépendamment des actions enregistrées.
 
-La tâche 10 conserve les mots proposés `erste / zweite` ; la terminaison **n** est fixe dans la phrase après `zur` (forme correcte : `zur zweiten Kreuzung`). Les indices de genre sont invisibles avant leur activation ; chaque couleur est accompagnée d’un texte.
+La tâche 13 conserve les mots proposés `erste / zweite` ; la terminaison **n** est fixe dans la phrase après `zur` (forme correcte : `zur zweiten Kreuzung`). Les indices de genre sont invisibles avant leur activation ; chaque couleur est accompagnée d’un texte.
 
 ## Tests automatisés
 
@@ -62,18 +62,18 @@ Ou :
 node --test tests/quiz.test.cjs
 ```
 
-**16 tests réussis lors de la livraison.** Ils vérifient la banque de 40 tâches, les réponses et options, la validation complète des tâches composites, le calcul des scores, le mélange, les trois trajets, l’unicité des déplacements, la cohérence entre les consignes affichées et les déplacements, la présence des indices et des contrôles clavier dans le code, ainsi que l’absence de requêtes externes dans l’application.
+**18 tests réussis lors de la livraison.** Ils vérifient la banque de 43 tâches, les réponses et options, la validation complète des tâches composites, le calcul des scores, le mélange, les trois trajets, l’unicité des déplacements, la cohérence entre les consignes affichées et les déplacements, la présence des indices et des contrôles clavier dans le code, ainsi que l’absence de requêtes externes dans l’application.
 
-Ces tests ne constituent pas un test visuel dans un navigateur et ne certifient pas WCAG 2.2 AA. Le navigateur de contrôle n’était pas disponible dans l’environnement de réalisation : l’affichage réel sur smartphone, les lecteurs d’écran et le parcours complet des interactions restent à vérifier avant la diffusion à la classe.
+Ces tests ne constituent pas un test visuel dans un navigateur et ne certifient pas WCAG 2.2 AA. Le parcours des 43 tâches est également contrôlé dans Chromium à 1280 px et 360 px : réponses, navigation, scores et absence de débordement horizontal. La recette sur un véritable smartphone et avec des lecteurs d’écran reste à effectuer avant la diffusion à la classe.
 
 ### Recette à effectuer dans un navigateur
 
 1. Ouvrir à 360 px de largeur et sur un véritable smartphone : aucun défilement horizontal, boutons lisibles, menus accessibles. Les menus affichant de longues phrases doivent permettre de lire les options.
 2. Parcourir au clavier : Tab, Maj+Tab, Entrée et Espace ; choisir un QCM avec les touches de direction ; utiliser les menus et placer/retirer les blocs.
-3. Sur la carte 8, activer un bâtiment par Entrée ou Espace, puis choisir un autre bâtiment dans la liste alternative.
+3. Sur la carte 11, activer un bâtiment par Entrée ou Espace, puis choisir un autre bâtiment dans la liste alternative.
 4. Vérifier que les expressions Wo/Wohin arrivent mélangées et sans couleurs. Afficher les deux indices.
 5. Valider des réponses incomplètes : aucune tâche suivante, aucun point ajouté.
-6. Terminer une étape entièrement juste : 10/10 ; entièrement fausse : 0/10. Vérifier les feedbacks et recommencer uniquement cette étape.
+6. Terminer une étape entièrement juste : 13/13 pour la première étape ou 10/10 pour les autres ; entièrement fausse : 0/13 ou 0/10. Vérifier les feedbacks et recommencer uniquement cette étape.
 7. Activer la sauvegarde, recharger, vérifier les scores ; désactiver et recharger ; vérifier l’effacement.
 8. Déconnecter le réseau après le chargement ou ouvrir demo.html hors ligne : toutes les interactions doivent fonctionner.
 
@@ -95,3 +95,5 @@ Le workflow fourni publie le site après réussite des tests. Dans Settings → 
 Le site n’utilise que des chemins relatifs : il peut fonctionner dans le sous-dossier d’un dépôt GitHub Pages. Le quiz n’envoie aucune réponse ; l’hébergeur peut conserver ses propres journaux techniques d’accès.
 
 Référence de publication : [documentation officielle GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+
+Les trois premières tâches portent sur l’Eisbachwelle : vague stationnaire, surf et localisation dans l’Englischer Garten. La réponse libre « Englischen Garten » accepte les variantes de majuscules et d’espaces. Les anciennes tâches suivent sans modification ; les itinéraires conservent leurs identifiants internes 8, 9 et 10.
