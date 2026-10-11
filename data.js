@@ -25,7 +25,7 @@ mc('Du bist noch nicht auf dem Marienplatz. Du möchtest dorthin gehen. Wohin ge
 {title:'FKK im Englischen Garten',subtitle:'Comprendre et respecter',icon:'☀',tasks:[
 mc('Was bedeutet FKK?',['Freikörperkultur','Freizeitkultur','Freikörperkunst'],'FKK est l’abréviation de Freikörperkultur.'),
 match('Ordne die Wörter zu!',[['nackt','nu'],['die Toleranz','la tolérance'],['fotografieren','photographier'],['die jungen Leute','les jeunes']],'Ces mots sont utiles pour comprendre le document étudié en classe.'),
-mc('Wo spielt der Text?',['Im Englischen Garten.','An der Eisbachwelle.','Auf dem Marienplatz.'],'Le texte étudié se déroule dans l’Englischer Garten.'),
+mc('Wo befindet sich der FKK-Bereich in München?',['Im Englischen Garten.','An der Eisbachwelle.','Auf dem Marienplatz.'],'Le texte étudié se déroule dans l’Englischer Garten.'),
 mc('Was gefällt Diana an FKK?',['Die Toleranz.','Die Fotos der Touristen.','Die neugierigen Blicke.'],'Diana apprécie la tolérance.'),
 {...mc('Was stört Diana?',['Wenn Leute Fotos machen oder sie anstarren.','Wenn Leute im Park spazieren gehen.','Wenn Leute im Park Sport machen.'],'Diana est gênée par les photos et les regards insistants.'),hints:[{text:'anstarren : fixer quelqu’un du regard, avec insistance.'}]},
 match('Wer sagt was?',[['Diana','Sie mag FKK, aber neugierige Blicke und Fotos stören sie.'],['Christina und Sophia','Sie sprechen darüber, dass FKK bei jungen Leuten weniger verbreitet ist.']],'Diana parle de son expérience ; Christina et Sophia évoquent la jeune génération.'),
